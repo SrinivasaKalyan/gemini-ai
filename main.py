@@ -15,7 +15,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 class PromptInput(BaseModel):
     prompt: str
 
