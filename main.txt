@@ -1,0 +1,15 @@
+# import google.generativeai as genai
+# import streamlit as st
+# def main():
+#     genai.configure(api_key="AIzaSyBh9Uc0f20IZtJe3N6xog2U9eCOgBWsK4s")
+#     model = genai.GenerativeModel('gemini-1.5-flash')
+#     input = st.text_area("input")
+#     sbutton = st.button("submit")
+
+#     response = model.generate_content(input)
+#     if sbutton:
+#         st.code(response.text)
+
+
+# if __name__ == "__main__":
+#     main()

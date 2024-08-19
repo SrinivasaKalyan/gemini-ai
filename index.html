@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI Text Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Generative AI Text Generator</h1>
+    <input type="text" id="prompt" placeholder="Enter your prompt here">
+    <button onclick="generateText()">Generate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    async function generateText() {
+        const prompt = document.getElementById('prompt').value;
+        
+        const response = await fetch('http://127.0.0.1:8000/generate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+        const decodedText = atob(data.text);
+        
+        document.getElementById('result').innerText = decodedText;
+    }
+</script>
+
+</body>
+</html>
